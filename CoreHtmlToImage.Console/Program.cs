@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace CoreHtmlToImage.Console
 {
@@ -8,12 +9,14 @@ namespace CoreHtmlToImage.Console
 		{
 			// From HTML string
 			HtmlConverter converter = new();
-			string html = "<div><strong>Hello</strong> World!</div>";
+			const string html = "<div><strong>Hello</strong> World!</div>";
 			byte[] htmlBytes = converter.FromHtmlString(html);
 
 			// From URL
 			byte[] urlBytes = converter.FromUrl("http://google.com", 800, format: ImageFormat.Png, quality: 90);
-			File.WriteAllBytes("D:\\image.png", urlBytes);
+			string path = Path.Combine(AppContext.BaseDirectory, "image.png");
+			File.WriteAllBytes(path, urlBytes);
+			System.Console.WriteLine($"Saved image to {path}");
 		}
 	}
 }
