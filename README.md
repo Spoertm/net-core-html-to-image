@@ -19,7 +19,7 @@ dotnet add package CoreHtmlToImage
 If you plan to run this on a Linux machine, make sure to have `wkhtmltoimage` installed. You can get it from here: https://wkhtmltopdf.org/downloads.html.
 
 ## Convert HTML string to image bytes
-```
+```c#
 var converter = new HtmlConverter();
 var html = "<div><strong>Hello</strong> World!</div>";
 var bytes = converter.FromHtmlString(html);
@@ -27,7 +27,7 @@ File.WriteAllBytes("image.jpg", bytes);
 ```
             
 ## Convert URL to image bytes
-```
+```c#
 var converter = new HtmlConverter();
 var bytes = converter.FromUrl("http://google.com");
 File.WriteAllBytes("image.jpg", bytes);
