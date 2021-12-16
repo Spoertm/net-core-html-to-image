@@ -4,8 +4,8 @@
     /// Output image format
     /// </summary>
     public enum ImageFormat
-    {
-        Jpg,
-        Png
-    }
+	{
+		Jpg,
+		Png,
+	}
 }
