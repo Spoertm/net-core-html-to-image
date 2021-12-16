@@ -21,6 +21,7 @@
     <ItemGroup>
         <EmbeddedResource Include="wkhtmltoimage.exe">
             <IncludeInPackage>true</IncludeInPackage>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </EmbeddedResource>
     </ItemGroup>
 

@@ -20,15 +20,6 @@ namespace CoreHtmlToImage
 			if (Environment.OSVersion.Platform == PlatformID.Win32NT)
 			{
 				ToolFilepath = Path.Combine(Directory, ToolFilename + ".exe");
-				if (File.Exists(ToolFilepath))
-					return;
-
-				Assembly assembly = typeof(HtmlConverter).Assembly;
-				string nameSpace = typeof(HtmlConverter).Namespace!;
-
-				using Stream resourceStream = assembly.GetManifestResourceStream($"{nameSpace}.{ToolFilename}.exe")!;
-				using FileStream fileStream = File.OpenWrite(ToolFilepath);
-				resourceStream.CopyTo(fileStream);
 			}
 			else if (Environment.OSVersion.Platform == PlatformID.Unix)
 			{
