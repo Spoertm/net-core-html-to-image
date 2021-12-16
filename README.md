@@ -2,6 +2,8 @@
 
 # .NET Core HTML to Image Converter
 
+**_This is the same library by andrei-m-code but updated to the latest .Net standard (currently .Net6)._**
+
 This is a .NET Core HTML to Image converter. It helps converting HTML strings or URLs to image bytes. Please see the examples:
 
 ## Installation Instructions
@@ -13,6 +15,9 @@ dotnet cli:
 ```
 dotnet add package CoreHtmlToImage
 ```
+
+If you plan to run this on a Linux machine, make sure to have `wkhtmltoimage` installed. You can get it from here: https://wkhtmltopdf.org/downloads.html.
+
 ## Convert HTML string to image bytes
 ```
 var converter = new HtmlConverter();
