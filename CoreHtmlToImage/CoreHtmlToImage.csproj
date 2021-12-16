@@ -1,25 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Title>.NET Core HTML to Image Converter</Title>
-    <Description>Convert HTML string or URL to image</Description>
-    <PackageProjectUrl>https://github.com/andrei-m-code/net-core-html-to-image</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/andrei-m-code/net-core-html-to-image</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>net-core html-to-image url-to-image net-standard</PackageTags>
-    <PackageReleaseNotes>Linux support added</PackageReleaseNotes>
-    <Authors>andrei-m-code</Authors>
-    <Copyright>© Free for all. Screw the people who commercialize such libraries</Copyright>
-    <Version>1.0.6</Version>
-    <PackageVersion>1.0.6</PackageVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>.NET Core HTML to Image Converter</Title>
+        <Description>Convert HTML string or URL to image</Description>
+        <PackageProjectUrl>https://github.com/andrei-m-code/net-core-html-to-image</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/andrei-m-code/net-core-html-to-image</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>net-core html-to-image url-to-image net-standard</PackageTags>
+        <PackageReleaseNotes>Linux support added</PackageReleaseNotes>
+        <Authors>andrei-m-code</Authors>
+        <Copyright>© Free for all. Screw the people who commercialize such libraries</Copyright>
+        <Version>1.0.6</Version>
+        <PackageVersion>1.0.6</PackageVersion>
+        <LangVersion>10</LangVersion>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="wkhtmltoimage.exe">
-      <IncludeInPackage>true</IncludeInPackage>
-    </EmbeddedResource>
-  </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="wkhtmltoimage.exe">
+            <IncludeInPackage>true</IncludeInPackage>
+        </EmbeddedResource>
+    </ItemGroup>
 
 </Project>
