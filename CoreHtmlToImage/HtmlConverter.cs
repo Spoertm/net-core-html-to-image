@@ -57,7 +57,7 @@ namespace CoreHtmlToImage
 		/// <param name="format">Output image format</param>
 		/// <param name="quality">Output image quality 1-100</param>
 		/// <returns></returns>
-		public static byte[] FromHtmlString(string html, int width = 1024, ImageFormat format = ImageFormat.Jpg, int quality = 100)
+		public byte[] FromHtmlString(string html, int width = 1024, ImageFormat format = ImageFormat.Jpg, int quality = 100)
 		{
 			string filename = Path.Combine(Directory, $"{Guid.NewGuid()}.html");
 			File.WriteAllText(filename, html);
@@ -74,7 +74,7 @@ namespace CoreHtmlToImage
 		/// <param name="format">Output image format</param>
 		/// <param name="quality">Output image quality 1-100</param>
 		/// <returns></returns>
-		public static byte[] FromUrl(string url, int width = 1024, ImageFormat format = ImageFormat.Jpg, int quality = 100)
+		public byte[] FromUrl(string url, int width = 1024, ImageFormat format = ImageFormat.Jpg, int quality = 100)
 		{
 			string imageFormat = format.ToString().ToLower();
 			string filename = Path.Combine(Directory, $"{Guid.NewGuid()}.{imageFormat}");
