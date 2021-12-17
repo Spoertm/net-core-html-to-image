@@ -19,10 +19,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="wkhtmltoimage.exe">
-            <IncludeInPackage>true</IncludeInPackage>
+        <None Update="wkhtmltoimage.exe">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </EmbeddedResource>
+        </None>
     </ItemGroup>
-
+    
 </Project>

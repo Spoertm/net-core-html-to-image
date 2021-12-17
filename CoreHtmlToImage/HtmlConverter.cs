@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Reflection;
 
 namespace CoreHtmlToImage
 {
@@ -17,11 +16,11 @@ namespace CoreHtmlToImage
 		static HtmlConverter()
 		{
 			// Check on what platform we are
-			if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+			if (OperatingSystem.IsWindows())
 			{
 				ToolFilepath = Path.Combine(Directory, ToolFilename + ".exe");
 			}
-			else if (Environment.OSVersion.Platform == PlatformID.Unix)
+			else if (OperatingSystem.IsLinux())
 			{
 				// Check if wkhtmltoimage package is installed on this distro in using which command
 				Process process = Process.Start(new ProcessStartInfo
@@ -39,7 +38,7 @@ namespace CoreHtmlToImage
 				process.WaitForExit();
 
 				if (!string.IsNullOrEmpty(answer) && answer.Contains("wkhtmltoimage"))
-					ToolFilepath = "wkhtmltoimage";
+					ToolFilepath = ToolFilename;
 				else
 					throw new("wkhtmltoimage does not appear to be installed on this linux system according to 'which' command; go to https://wkhtmltopdf.org/downloads.html");
 			}
@@ -82,14 +81,11 @@ namespace CoreHtmlToImage
 
 			string args;
 
-			if (IsLocalPath(url))
-			{
+			bool isLocalPath = !url.StartsWith("http") && new Uri(url).IsFile;
+			if (isLocalPath)
 				args = $"--quality {quality} --width {width} -f {imageFormat} \"{url}\" \"{filename}\"";
-			}
 			else
-			{
 				args = $"--quality {quality} --width {width} -f {imageFormat} {url} \"{filename}\"";
-			}
 
 			Process process = Process.Start(new ProcessStartInfo(ToolFilepath, args)
 			{
@@ -100,7 +96,7 @@ namespace CoreHtmlToImage
 				RedirectStandardError = true,
 			})!;
 
-			process.ErrorDataReceived += Process_ErrorDataReceived;
+			process.ErrorDataReceived += (_, e) => throw new(e.Data);
 			process.WaitForExit();
 
 			if (!File.Exists(filename))
@@ -109,14 +105,6 @@ namespace CoreHtmlToImage
 			byte[] bytes = File.ReadAllBytes(filename);
 			File.Delete(filename);
 			return bytes;
-		}
-
-		private static bool IsLocalPath(string path)
-			=> !path.StartsWith("http") && new Uri(path).IsFile;
-
-		private static void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
-		{
-			throw new(e.Data);
 		}
 	}
 }
