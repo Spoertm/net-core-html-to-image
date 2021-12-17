@@ -19,9 +19,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="wkhtmltoimage.exe">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
+      <None Update="wkhtmltoimage.exe">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
     
 </Project>
